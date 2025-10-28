@@ -1,12 +1,10 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, Code2, Sparkles } from "lucide-react";
-import { HeroCursorEffect } from "@/components/cursor-effects/HeroCursorEffect";
 
 export function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
-      <HeroCursorEffect />
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -48,7 +46,7 @@ export function Hero() {
             </motion.div>
             
             <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold mb-6 tracking-tight">
-              <span className="block">John Developer</span>
+              <span className="block">Akash Vasava</span>
               <span className="block text-gradient mt-2">Building Digital</span>
               <span className="block text-gradient">Experiences</span>
             </h1>

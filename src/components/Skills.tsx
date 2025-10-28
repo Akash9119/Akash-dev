@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Badge } from "@/components/ui/badge";
-import { SkillsCursorEffect } from "@/components/cursor-effects/SkillsCursorEffect";
 
 const skillCategories = [
   {
@@ -29,7 +28,6 @@ export function Skills() {
 
   return (
     <section id="skills" className="py-20 sm:py-32 bg-[hsl(var(--section-bg-2))]" ref={ref}>
-      <SkillsCursorEffect />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

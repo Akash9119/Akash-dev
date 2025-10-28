@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import profileImage from "@/assets/profile-gradient.jpg";
-import { AboutCursorEffect } from "@/components/cursor-effects/AboutCursorEffect";
 
 export function About() {
   const ref = useRef(null);
@@ -10,7 +9,6 @@ export function About() {
 
   return (
     <section id="about" className="py-20 sm:py-32 bg-[hsl(var(--section-bg-1))]" ref={ref}>
-      <AboutCursorEffect />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}

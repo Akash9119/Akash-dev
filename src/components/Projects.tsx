@@ -41,18 +41,23 @@ export function Projects() {
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [activeRect, setActiveRect] = useState<DOMRect | null>(null);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      if (!activeRect) return;
+      // compute coordinates relative to the active card element
+      const x = e.clientX - activeRect.left;
+      const y = e.clientY - activeRect.top;
+      setMousePosition({ x, y });
     };
 
-    if (hoveredIndex !== null) {
+    if (hoveredIndex !== null && activeRect) {
       window.addEventListener("mousemove", handleMouseMove);
     }
 
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [hoveredIndex]);
+  }, [hoveredIndex, activeRect]);
 
   return (
     <>
@@ -82,8 +87,16 @@ export function Projects() {
                 initial={{ opacity: 0, y: 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
+                onMouseEnter={(e) => {
+                  setHoveredIndex(index);
+                  // store bounding rect of the hovered element so we can compute relative cursor coords
+                  const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+                  setActiveRect(rect);
+                }}
+                onMouseLeave={() => {
+                  setHoveredIndex(null);
+                  setActiveRect(null);
+                }}
               >
                 <Card 
                   className="overflow-hidden group hover:shadow-2xl transition-all duration-300 cursor-pointer relative"

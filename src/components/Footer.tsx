@@ -24,7 +24,7 @@ export function Footer() {
             Building digital experiences with passion and precision
           </p>
           <div className="pt-4 text-sm text-muted-foreground">
-            © {new Date().getFullYear()} John Developer. All rights reserved.
+            © {new Date().getFullYear()} Akash Vasava. All rights reserved.
           </div>
         </motion.div>
       </div>
