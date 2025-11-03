@@ -90,12 +90,12 @@ export function Hero() {
           >
             <div className="flex items-center gap-2">
               <Code2 className="w-5 h-5 text-primary" />
-              <span>5+ Years Experience</span>
+              <span>2+ Years Experience</span>
             </div>
-            <div className="h-4 w-px bg-border" />
+            <div className="border-hidden w-12" />
             <div className="flex items-center gap-2">
               <Sparkles className="w-5 h-5 text-secondary" />
-              <span>50+ Projects</span>
+              <span>25+ Projects</span>
             </div>
           </motion.div>
         </div>

@@ -49,7 +49,7 @@ export function About() {
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="absolute -left-4 top-1/4 bg-card p-4 rounded-2xl shadow-xl border border-border"
               >
-                <div className="text-3xl font-bold text-primary">50+</div>
+                <div className="text-3xl font-bold text-primary">25+</div>
                 <div className="text-sm text-muted-foreground">Projects</div>
               </motion.div>
               
@@ -59,7 +59,7 @@ export function About() {
                 transition={{ duration: 0.6, delay: 0.7 }}
                 className="absolute -right-4 bottom-1/4 bg-card p-4 rounded-2xl shadow-xl border border-border"
               >
-                <div className="text-3xl font-bold text-secondary">5+</div>
+                <div className="text-3xl font-bold text-secondary">2+</div>
                 <div className="text-sm text-muted-foreground">Years Exp</div>
               </motion.div>
             </div>
@@ -80,7 +80,7 @@ export function About() {
                 Get to know me
               </div>
               <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-                Passionate About <span className="text-gradient">Creating</span>
+                Driven by Curiosity, <span className="text-gradient">Defined by Craftsmanship</span>
               </h2>
             </motion.div>
             
@@ -91,9 +91,7 @@ export function About() {
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="leading-relaxed"
               >
-                I'm a passionate full-stack developer specializing in WordPress backend,
-                React, and modern web development. I thrive on solving complex problems,
-                building performant applications, and continuously learning new technologies.
+                I’m a passionate Full-Stack Developer with a strong foundation in React.js and proficiency in backend technologies such as Node.js, Express, MongoDB, and MySQL. Alongside modern JavaScript frameworks, I also specialize in Full-Stack WordPress development, including custom theme and plugin development.
               </motion.p>
               
               <motion.p
@@ -102,9 +100,7 @@ export function About() {
                 transition={{ duration: 0.6, delay: 0.6 }}
                 className="leading-relaxed"
               >
-                With years of hands-on experience, I've successfully delivered diverse projects
-                ranging from e-commerce platforms to custom web applications. My approach combines
-                technical excellence with a deep focus on user experience.
+                Over the past few years, I’ve built and delivered a variety of digital solutions—from eCommerce platforms and business websites to management systems, landing pages, and blogs. My approach combines clean, maintainable code with an emphasis on scalability, performance, and seamless user experience.
               </motion.p>
               
               <motion.p
@@ -113,8 +109,7 @@ export function About() {
                 transition={{ duration: 0.6, delay: 0.7 }}
                 className="leading-relaxed"
               >
-                Beyond coding, I'm an active contributor to open source projects and enjoy
-                sharing knowledge with the developer community through mentoring and technical writing.
+                What drives me most is the pursuit of continuous growth. I enjoy exploring new technologies, optimizing existing systems, and turning ideas into functional, user-friendly web applications. My long-term vision is to evolve into a Full-Stack Software Engineer, capable of leading end-to-end product development with innovation and technical excellence at the core.
               </motion.p>
             </div>
           </motion.div>
