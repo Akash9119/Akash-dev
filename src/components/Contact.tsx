@@ -2,32 +2,32 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Mail, Phone, Linkedin, Twitter } from "lucide-react";
+import { Mail, Phone, Linkedin, X } from "lucide-react"; // Changed Twitter to X
 
 const contactInfo = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+91 12345 67890",
-    href: "tel:+911234567890",
+    value: "+91 95862 93916",
+    href: "tel:+919586293916",
   },
   {
     icon: Mail,
     label: "Email",
-    value: "john@example.com",
-    href: "mailto:john@example.com",
+    value: "akashj.vasava@gmail.com",
+    href: "mailto:akashj.vasava@gmail.com",
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
-    value: "linkedin.com/in/johndeveloper",
-    href: "https://linkedin.com/in/johndeveloper",
+    value: "linkedin.com/in/akash-vasava/",
+    href: "https://www.linkedin.com/in/akash-vasava/",
   },
   {
-    icon: Twitter,
-    label: "Twitter",
-    value: "@johndeveloper",
-    href: "https://twitter.com/johndeveloper",
+    icon: X, // Changed Twitter to X
+    label: "X",
+    value: "@AkashjVasava",
+    href: "https://x.com/AkashjVasava",
   },
 ];
 

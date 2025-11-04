@@ -18,7 +18,7 @@ export function Footer() {
             transition={{ duration: 0.5 }}
             className="text-2xl font-bold text-gradient mb-2"
           >
-            Portfolio.
+            Akash Vasava
           </motion.div>
           <p className="text-muted-foreground">
             Building digital experiences with passion and precision

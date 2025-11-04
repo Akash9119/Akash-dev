@@ -43,7 +43,7 @@ export function Navigation() {
             className="text-xl font-bold text-gradient"
             whileHover={{ scale: 1.05 }}
           >
-            Portfolio.
+            Akash
           </motion.a>
 
           {/* Desktop Navigation */}

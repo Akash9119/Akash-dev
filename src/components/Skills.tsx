@@ -5,20 +5,20 @@ import { Badge } from "@/components/ui/badge";
 
 const skillCategories = [
   {
-    title: "Frontend",
-    skills: ["React", "HTML/CSS", "TypeScript", "JavaScript", "Tailwind CSS", "Next.js"],
+    title: "Frontend Mastery",
+    skills: ["React", "Next.js", "TypeScript", "JavaScript (ES6+)", "Tailwind CSS", "Styled Components", "Performance Opt.", "Web Accessibility (A11y)"],
   },
   {
-    title: "Backend",
-    skills: ["Node.js", "PHP", "MySQL", "REST APIs", "Express.Js", "MongoDB"],
+    title: "Backend & Data",
+    skills: ["Node.js", "Express.js", "REST APIs", "MongoDB", "MySQL", "Input Validation", "React Query (Data Fetching)", "Microservices"],
   },
   {
-    title: "Design",
-    skills: ["Figma", "UI/UX Design", "Responsive Design", "Prototyping", "Wireframing"],
+    title: "DevOps & Tools",
+    skills: ["Git & GitHub", "Testing (Jest/Cypress)", "CI/CD (GitHub Actions)", "Docker", "Vercel/Netlify (Deployment)", "API Security (JWT)"],
   },
   {
-    title: "WordPress",
-    skills: ["Theme Development", "WooCommerce", "Plugin Development", "Custom Post Types", "Gutenberg"],
+    title: "Foundational & Design",
+    skills: ["HTML/CSS", "Figma", "UI/UX Principles", "Responsive Design", "Prototyping", "WordPress", "PHP"],
   },
 ];
 
@@ -41,8 +41,8 @@ export function Skills() {
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
             Skills & <span className="text-gradient">Technologies</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Technologies and tools I use to bring ideas to life
+          <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+            A refined and focused set of modern tools to build robust, scalable, and secure full-stack applications.
           </p>
         </motion.div>
 
@@ -55,12 +55,14 @@ export function Skills() {
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
               className="space-y-4"
             >
+              {/* Category Title with Gradient Separator */}
               <div className="flex items-center gap-3 mb-6">
                 <div className="h-px flex-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
-                <h3 className="text-xl font-bold text-primary">{category.title}</h3>
+                <h3 className="text-xl font-bold text-primary text-center whitespace-nowrap">{category.title}</h3>
                 <div className="h-px flex-1 bg-gradient-to-l from-transparent via-primary to-transparent" />
               </div>
               
+              {/* Skills Badges */}
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill, skillIndex) => (
                   <motion.div
@@ -85,3 +87,4 @@ export function Skills() {
     </section>
   );
 }
+
