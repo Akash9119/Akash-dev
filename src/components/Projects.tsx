@@ -4,22 +4,30 @@ import { useRef, useState, useEffect } from "react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, Calendar, Users } from "lucide-react";
-import project1 from "@/assets/project-1.jpg";
+import project1 from "@/assets/project1.png";
 import project2 from "@/assets/project-2.jpg";
 import { Lightbox } from "@/components/Lightbox";
 
 const projects = [
   {
-    title: "Project One",
-    description: "A modern React app with API integrations.",
-    image: project1,
-    tags: ["React", "TypeScript", "API"],
-    liveUrl: "#",
-    codeUrl: "#",
-    fullDescription: "A comprehensive React application featuring real-time API integrations, state management with Redux, and a responsive design. This project showcases modern web development practices including code splitting, lazy loading, and optimized performance.",
-    features: ["Real-time data synchronization", "Advanced state management", "Responsive design", "Performance optimization"],
-    duration: "3 months",
-    team: "Solo project",
+  title: "Film-Nestle",
+  description: "A modern movie and series explorer with IMDb ratings, cast info, trailers, and optimized UI/UX.",
+  image: project1,
+  tags: ["React", "API", "Pagination", "UI/UX"],
+  liveUrl: "https://film-nestle.vercel.app/",
+  codeUrl: "https://github.com/Akash9119/FilmNestle",
+  fullDescription: "Film-Nestle is a sleek and responsive web application that allows users to explore movies and TV series with detailed IMDb ratings, cast information, trailers, and related content. The project focuses on improved data fetching, pagination, skeleton loading, and modern UI practices for a smooth browsing experience.",
+  features: [
+    "IMDb ratings and detailed metadata",
+    "Cast and actor information",
+    "Featured trailers and related videos",
+    "Pagination for large content lists",
+    "Skeleton loading structure",
+    "Optimized data fetching",
+    "Modern responsive UI"
+  ],
+  duration: "2 months",
+  team: "Solo project"
   },
   {
     title: "Project Two",
