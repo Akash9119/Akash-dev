@@ -5,7 +5,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, Calendar, Users } from "lucide-react";
 import project1 from "@/assets/project1.png";
-import project2 from "@/assets/project-2.jpg";
+import project2 from "@/assets/project-2.png";
 import { Lightbox } from "@/components/Lightbox";
 
 const projects = [
@@ -30,17 +30,34 @@ const projects = [
   team: "Solo project"
   },
   {
-    title: "Project Two",
-    description: "WordPress theme customization project.",
-    image: project2,
-    tags: ["WordPress", "PHP", "CSS"],
-    liveUrl: "#",
-    codeUrl: "#",
-    fullDescription: "A custom WordPress theme built from scratch with advanced customization options. Features include a custom Gutenberg blocks, WooCommerce integration, and a fully responsive design that works seamlessly across all devices.",
-    features: ["Custom Gutenberg blocks", "WooCommerce integration", "Advanced theme options", "SEO optimized"],
-    duration: "2 months",
-    team: "Team of 3",
-  },
+title: "Text Transformer",
+description: "A powerful, user-friendly text utility app that performs case conversions, whitespace cleanup, encoding/decoding, formatting, and fun text transformations for everyday editing and developer workflows.",
+image: project2,
+tags: ["React", "JavaScript", "Text Tools", "Utility"],
+liveUrl: "#",
+codeUrl: "[https://github.com/Akash9119/TextTransformer](https://github.com/Akash9119/TextTransformer)",
+fullDescription: "Text Transformer is a responsive single-page application built with React that provides a comprehensive set of text manipulation tools — from simple case conversions and extra-space removal to encoding/decoding and developer-friendly formatting (slugify, camelCase, JSON pretty-print). It focuses on fast client-side transformations, an organized tabbed UI for tool categories, real-time stats (words, characters, read time), and utility actions like copy and download for seamless content workflow.",
+features: [
+"Convert to UPPERCASE, lowercase, Title Case, and Sentence Case",
+"Copy to clipboard and Download text as .txt",
+"Remove extra spaces, trim lines, and remove blank lines",
+"Reverse text, reverse words, and reverse lines",
+"Sort lines (A→Z / Z→A) and sort words alphabetically",
+"Indent / unindent lines and trim line-level whitespace",
+"Remove punctuation or digits; keep only letters or numbers",
+"Base64 encode/decode, URL encode/decode, HTML encode/decode",
+"ROT13 cipher and various unicode style transforms (bold, italic, monospace)",
+"Slugify, camelCase, snake_case, kebab-case conversions",
+"JSON pretty-print and minify with error handling",
+"Zalgo and other fun aesthetic text effects",
+"Live preview and quick stats (words, chars, lines, sentences, paragraphs, reading time)",
+"Tabbed UI grouping operations into Case, Arrange, Format, Encode, Code, and Style categories",
+"Accessible buttons with disabled state when no text, and alert notifications for actions"
+],
+duration: "3 weeks",
+team: "Solo project"
+}
+,
 ];
 
 export function Projects() {
