@@ -8,13 +8,13 @@ export function About() {
   const isInView = useInView(ref, { once: false, margin: "-100px" });
 
   return (
-    <section id="about" className="py-20 sm:py-32 bg-[hsl(var(--section-bg-1))]" ref={ref}>
+    <section id="about" className="py-16 sm:py-24 lg:py-28 overflow-x-clip bg-[hsl(var(--section-bg-1))]" ref={ref}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.6 }}
-          className="grid md:grid-cols-2 gap-16 items-center"
+          className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -47,7 +47,7 @@ export function About() {
                 initial={{ opacity: 0, x: -30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="absolute -left-4 top-1/4 bg-card p-4 rounded-2xl shadow-xl border border-border"
+                className="absolute -left-4 top-1/4 bg-card p-4 rounded-2xl shadow-xl border border-border hidden sm:block"
               >
                 <div className="text-3xl font-bold text-primary">25+</div>
                 <div className="text-sm text-muted-foreground">Projects</div>
@@ -57,7 +57,7 @@ export function About() {
                 initial={{ opacity: 0, x: 30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
                 transition={{ duration: 0.6, delay: 0.7 }}
-                className="absolute -right-4 bottom-1/4 bg-card p-4 rounded-2xl shadow-xl border border-border"
+                className="absolute -right-4 bottom-1/4 bg-card p-4 rounded-2xl shadow-xl border border-border hidden sm:block"
               >
                 <div className="text-3xl font-bold text-secondary">2+</div>
                 <div className="text-sm text-muted-foreground">Years Exp</div>
@@ -91,7 +91,7 @@ export function About() {
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="leading-relaxed"
               >
-                I’m a passionate Full-Stack Developer with a strong foundation in React.js and proficiency in backend technologies such as Node.js, Express, MongoDB, and MySQL. Alongside modern JavaScript frameworks, I also specialize in Full-Stack WordPress development, including custom theme and plugin development.
+                I’m a passionate Full Stack & Gen AI Developer with a strong foundation in React.js and proficiency in backend technologies such as Node.js, Express, MongoDB, and MySQL. Alongside modern JavaScript frameworks, I also specialize in Full-Stack WordPress development, including custom theme and plugin development, and Generative AI integrations using modern LLM APIs.
               </motion.p>
               
               <motion.p
@@ -109,7 +109,7 @@ export function About() {
                 transition={{ duration: 0.6, delay: 0.7 }}
                 className="leading-relaxed"
               >
-                What drives me most is the pursuit of continuous growth. I enjoy exploring new technologies, optimizing existing systems, and turning ideas into functional, user-friendly web applications. My long-term vision is to evolve into a Full-Stack Software Engineer, capable of leading end-to-end product development with innovation and technical excellence at the core.
+                What drives me most is the pursuit of continuous growth — from building scalable full-stack applications to exploring Generative AI and LLM integrations. My goal is to evolve into an engineer who builds intelligent, AI-powered products end-to-end: combining strong web fundamentals with modern machine learning capabilities.
               </motion.p>
             </div>
           </motion.div>

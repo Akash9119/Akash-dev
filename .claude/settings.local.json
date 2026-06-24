@@ -3,7 +3,10 @@
     "allow": [
       "WebSearch",
       "Bash(bun run *)",
-      "Bash(~/.bun/bin/bun run *)"
+      "Bash(~/.bun/bin/bun run *)",
+      "Skill(run)",
+      "Bash(curl -s http://localhost:8080)",
+      "Bash(npx vite *)"
     ]
   }
 }

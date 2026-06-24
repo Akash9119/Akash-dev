@@ -77,7 +77,7 @@ export function Achievements() {
 
   return (
     <>
-      <section id="achievements" className="py-20 sm:py-32 bg-[hsl(var(--section-bg-1))]" ref={ref}>
+      <section id="achievements" className="py-16 sm:py-24 lg:py-28 bg-[hsl(var(--section-bg-1))]" ref={ref}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
