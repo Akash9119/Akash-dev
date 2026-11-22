@@ -16,20 +16,24 @@ bun run lint       # ESLint check
 bun run preview    # Preview built site
 ```
 
-There are no tests in this project.
+The only test is `src/lib/experience.test.ts` (run with `bun test`).
 
 ## Architecture
 
 **Single route** (`/`) renders `src/pages/Index.tsx`, which stacks all section components top-to-bottom. The 404 page is `src/pages/NotFound.tsx`.
 
 ### Section Order (Index.tsx)
-`Navigation` → `Hero` → `About` → `Skills` → `Projects` → `Achievements` → `Contact` → `Footer`
+`Navigation` → `Hero` → `Experience` → `Projects` → `Skills` → `Certificates` → `Contact` → `Footer`
+
+Each section below the hero is wrapped in `Section.tsx`, which renders the shell-command eyebrow (e.g. `$ ls ~/projects`) and heading.
 
 ### Path Alias
 `@/` maps to `src/` — use this for all imports.
 
 ### Data
-All content is hardcoded as static arrays inside each component — there is no CMS, API, or separate data file. To update content (project links, contact info, skills), edit the component directly.
+All content is hardcoded as static arrays inside each component — there is no CMS, API, or separate data file. To update content (project links, contact info, skills, certificates), edit the component directly.
+
+Years of experience are computed from `CAREER_START` in `src/lib/experience.ts` (Feb 2024) — never hardcode "2y 9m". Test: `bun test`. The resume download is `public/resume.pdf`.
 
 ### shadcn/ui Components
 Pre-built components live in `src/components/ui/`. These are Radix UI primitives styled with Tailwind. Do not modify them directly — treat them as a library. New components can be added via `bunx shadcn-ui@latest add <component>`.
@@ -39,47 +43,42 @@ Pre-built components live in `src/components/ui/`. These are Radix UI primitives
 **Tailwind CSS + CSS Variables (HSL-based)**. All colors are defined as HSL CSS variables in `src/index.css` and consumed via Tailwind's `hsl(var(--...))` pattern. Dark mode is class-based (`darkMode: ["class"]` in `tailwind.config.ts`), managed by `next-themes`.
 
 ### Key CSS Variables (defined in `src/index.css`)
-| Variable | Light Value | Purpose |
-|---|---|---|
-| `--primary` | `200 100% 45%` | Blue accent |
-| `--secondary` | `280 70% 60%` | Purple accent |
-| `--accent` | `160 60% 50%` | Teal accent |
-| `--background` / `--foreground` | White / near-black | Page base |
+| Variable | Purpose |
+|---|---|
+| `--primary` | Amber accent (buttons, highlights, string values) |
+| `--accent` | Cyan prompt color (`$`, tags, JSON keys) |
+| `--ok` | Green status / `+` bullets (Tailwind `text-ok`, `bg-ok`) |
+| `--background` / `--foreground` / `--card` / `--border` | Page base; dark is the default theme |
 
 ### Custom Utility Classes (`src/index.css`)
-- `.gradient-primary` — 135deg gradient from primary → secondary color
-- `.text-gradient` — applies gradient as text color via `background-clip: text`
-- `.glass-effect` — frosted glass card (blur + semi-transparent border)
-- `.scrollbar-hide` — hides scrollbar while preserving scroll behavior
+- `.bg-grid` — faint terminal grid behind the top of the page
+- `.caret` — blinking block cursor after the hero name
 
 ### Font
-Inter (loaded from Google Fonts via `index.html` preconnect). Set as `font-sans` in `tailwind.config.ts`.
+Geist (`font-sans`) and Geist Mono (`font-mono`), loaded from Google Fonts in `index.html`.
 
 ## Animation Conventions
 
 All animations use **Framer Motion**. Standard patterns used throughout:
 
-- **Scroll-triggered:** `useInView` hook with `triggerOnce: true` — animations fire once when element enters viewport.
-- **Staggered children:** delay calculated as `index * 0.1` seconds per item.
-- **Hover states:** Cards use `whileHover={{ scale: 1.02 }}` or similar.
-- **Modal entry/exit:** `AnimatePresence` wrapping the `Lightbox` component handles unmount animations.
-- **Mouse tracking:** The Projects section tracks `mousemove` for a gradient overlay effect.
+- **Hover states:** cards lift 2px and get an amber border (Tailwind classes, no motion).
+- Sections fade in once via `whileInView` in `Section.tsx`.
 
 ## Theme System
 
-`next-themes` (`ThemeProvider` in `App.tsx`) persists the user's theme choice and applies a `.dark` class to the `<html>` element. `ThemeToggle.tsx` uses a `mounted` check to prevent hydration mismatch before rendering the Sun/Moon icon.
+`next-themes` (`ThemeProvider` in `App.tsx`) persists the user's theme choice and applies a `.dark` class to the `<html>` element. `ThemeToggle.tsx` uses a `mounted` check to prevent hydration mismatch; its label names the mode you switch to ("Light mode" / "Dark mode").
 
 ## Key Component Notes
 
-**Navigation:** Fixed/sticky header. Adds a background blur on scroll via a `scrolled` state. Mobile menu is a sheet that closes on link click. Anchor links (`#section-id`) drive in-page navigation.
+**Navigation:** Sticky header with `./section` links (hidden below `md`), theme toggle and "hire me".
 
-**Lightbox:** Reusable modal in `src/components/Lightbox.tsx`. Used by both Projects and Achievements. Accepts `isOpen`, `onClose`, and `children` props.
+**Hero:** Exports `TerminalWindow` (the window-chrome card), reused by Contact.
 
-**Projects:** Two featured projects — Film-Nestle and Text Transformer. Each project card has a mouse-tracking gradient overlay. Clicking a card opens the Lightbox with project details.
+**Projects:** Exports `ProjectCard`, reused by Certificates. `wide: true` spans both columns.
 
-**Achievements:** Horizontal scrollable carousel using `embla-carousel-react`. Currently the section content (certificate cards) is commented out in the component — the structure and carousel logic are in place.
+**Certificates:** Append to the `certificates` array to add one.
 
-**Contact:** Four static contact cards (Phone, Email, LinkedIn, X/Twitter). No form — all links are `mailto:`, `tel:`, or external profile URLs.
+**Contact:** Contact rows with copy buttons, plus resume download.
 
 ## TypeScript
 

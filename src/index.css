@@ -2,87 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Design system: terminal style. All colors are HSL and consumed as hsl(var(--x)). */
 
 @layer base {
   :root {
-    --background: 240 100% 99%;
-    --foreground: 240 10% 10%;
-
+    --background: 48 18% 95%;
+    --foreground: 220 12% 10%;
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 10%;
-
+    --card-foreground: 220 12% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 10%;
+    --popover-foreground: 220 12% 10%;
 
-    --primary: 200 100% 45%;
-    --primary-rgb: 0, 153, 230;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 280 70% 60%;
-    --secondary-foreground: 0 0% 100%;
-
-    --muted: 240 20% 96%;
-    --muted-foreground: 240 5% 45%;
-
-    --accent: 160 60% 50%;
+    --primary: 36 100% 33%; /* amber */
+    --primary-foreground: 48 18% 95%;
+    --secondary: 45 14% 90%;
+    --secondary-foreground: 220 12% 10%;
+    --accent: 191 79% 28%; /* cyan prompt */
     --accent-foreground: 0 0% 100%;
+    --ok: 131 47% 33%;
 
-    --destructive: 0 84.2% 60.2%;
+    --muted: 45 14% 90%;
+    --muted-foreground: 216 7% 39%;
+    --destructive: 0 72% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 10% 90%;
-    --input: 240 10% 90%;
-    --ring: 200 100% 45%;
-
-    --radius: 0.75rem;
-
-    --gradient-start: 200 100% 45%;
-    --gradient-end: 280 70% 60%;
-    
-    --section-bg-1: 240 60% 98%;
-    --section-bg-2: 200 60% 97%;
-    --section-bg-3: 280 40% 98%;
+    --border: 45 14% 85%;
+    --input: 45 14% 85%;
+    --ring: 36 100% 33%;
+    --radius: 0.5rem;
   }
 
   .dark {
-    --background: 240 10% 8%;
-    --foreground: 240 10% 98%;
+    --background: 216 16% 6%;
+    --foreground: 216 10% 91%;
+    --card: 216 17% 9%;
+    --card-foreground: 216 10% 91%;
+    --popover: 216 17% 9%;
+    --popover-foreground: 216 10% 91%;
 
-    --card: 240 10% 12%;
-    --card-foreground: 240 10% 98%;
+    --primary: 39 87% 62%;
+    --primary-foreground: 216 16% 6%;
+    --secondary: 216 17% 12%;
+    --secondary-foreground: 216 10% 91%;
+    --accent: 190 56% 63%;
+    --accent-foreground: 216 16% 6%;
+    --ok: 130 47% 65%;
 
-    --popover: 240 10% 12%;
-    --popover-foreground: 240 10% 98%;
-
-    --primary: 200 100% 55%;
-    --primary-rgb: 51, 204, 255;
-    --primary-foreground: 240 10% 10%;
-
-    --secondary: 280 70% 65%;
-    --secondary-foreground: 240 10% 10%;
-
-    --muted: 240 10% 15%;
-    --muted-foreground: 240 5% 65%;
-
-    --accent: 160 60% 55%;
-    --accent-foreground: 240 10% 10%;
-
-    --destructive: 0 62.8% 50%;
+    --muted: 216 17% 12%;
+    --muted-foreground: 214 9% 59%;
+    --destructive: 0 62% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 10% 20%;
-    --input: 240 10% 20%;
-    --ring: 200 100% 55%;
-
-    --gradient-start: 200 100% 55%;
-    --gradient-end: 280 70% 65%;
-    
-    --section-bg-1: 240 10% 10%;
-    --section-bg-2: 240 10% 8%;
-    --section-bg-3: 240 10% 12%;
+    --border: 214 16% 17%;
+    --input: 214 16% 17%;
+    --ring: 39 87% 62%;
   }
 }
 
@@ -91,39 +64,59 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground;
-  }
-
   html {
     scroll-behavior: smooth;
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+    }
   }
 }
 
 @layer utilities {
-  .gradient-primary {
-    background: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-end)));
+  /* Faint terminal grid behind the page, fading out toward the edges. */
+  .bg-grid {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.6) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.6) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at 50% 0%, black 0%, transparent 70%);
   }
 
-  .text-gradient {
-    background: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-end)));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .caret {
+    display: inline-block;
+    width: 0.5em;
+    height: 0.82em;
+    margin-left: 0.4rem;
+    vertical-align: -0.04em;
+    background: hsl(var(--primary));
+    animation: blink 1.1s steps(1) infinite;
   }
 
-  .glass-effect {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
   }
 }
